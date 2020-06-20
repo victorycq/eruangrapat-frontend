@@ -1,0 +1,222 @@
+<nb-card accent="info">
+  <nb-card-header>Informasi Rapat</nb-card-header>
+  <nb-card-body>
+    <nb-card accent="info">
+      <nb-card-header>Detail</nb-card-header>
+      <nb-card-body>
+        <p><b>Ketua :</b></p>
+        <input
+          nbInput
+          shape="semi-round"
+          id="typeahead-basic"
+          type="text"
+          class="form-control"
+          [(ngModel)]="detailRapat.ketua"
+          [ngbTypeahead]="searchNamaPegawai"
+        />
+        <p><b>Pencatat :</b></p>
+        <input
+          nbInput
+          shape="semi-round"
+          id="typeahead-basic"
+          type="text"
+          class="form-control"
+          [(ngModel)]="detailRapat.pencatat"
+          [ngbTypeahead]="searchNamaPegawai"
+        />
+        <p><b>Sekretaris :</b></p>
+        <input
+          nbInput
+          shape="semi-round"
+          id="typeahead-basic"
+          type="text"
+          class="form-control"
+          [(ngModel)]="detailRapat.sekretaris"
+          [ngbTypeahead]="searchNamaPegawai"
+        />
+        <p><b>Kata Pembuka :</b></p>
+        <textarea
+          nbInput
+          shape="semi-round"
+          [(ngModel)]="detailRapat.kataPembuka"
+          fullWidth
+          placeholder="Kata Pembuka"
+        ></textarea>
+        <p><b>Pembahasan :</b></p>
+        <textarea
+          nbInput
+          shape="semi-round"
+          [(ngModel)]="detailRapat.pembahasan"
+          fullWidth
+          placeholder="Pembahasan"
+        ></textarea>
+        <p><b>Peraturan :</b></p>
+        <textarea
+          nbInput
+          shape="semi-round"
+          [(ngModel)]="detailRapat.peraturan"
+          fullWidth
+          placeholder="Peraturan"
+        ></textarea>
+        <p><b>Acara :</b></p>
+        <p *ngFor="let data of detailRapat.acara; let i = index">
+          {{ i + 1 }}. {{ data["nama"] }}
+          <ng-template #dialog let-data let-ref="dialogRef">
+            <nb-card>
+              <nb-card-header>Peringatan</nb-card-header>
+              <nb-card-body>{{ data }}</nb-card-body>
+              <nb-card-footer>
+                <button nbButton (click)="ref.close()">No</button>
+                <button nbButton (click)="hapusAcara()">Yes</button>
+              </nb-card-footer>
+            </nb-card>
+          </ng-template>
+          <button
+            nbButton
+            outline
+            status="danger"
+            size="small"
+            (click)="openDialogHapusAcara(dialog, data['nama'])"
+          >
+            Hapus
+          </button>
+        </p>
+        <input
+          type="text"
+          nbInput
+          shape="semi-round"
+          fullWidth
+          placeholder="Judul Acara"
+          [(ngModel)]="judulAcara"
+        />
+        <div class="d-flex justify-content-end">
+          <button
+            nbButton
+            shape="semi-round"
+            status="info"
+            (click)="tambahAcara()"
+          >
+            Tambah
+          </button>
+        </div>
+        <p><b>Kegiatan :</b></p>
+        <p *ngFor="let data of detailRapat.kegiatan; let i = index">
+          {{ i + 1 }}. {{ data["nama"] }}
+          <ng-template #dialog let-data let-ref="dialogRef">
+            <nb-card>
+              <nb-card-header>Peringatan</nb-card-header>
+              <nb-card-body>{{ data }}</nb-card-body>
+              <nb-card-footer>
+                <button nbButton (click)="ref.close()">No</button>
+                <button nbButton (click)="hapusKegiatan()">Yes</button>
+              </nb-card-footer>
+            </nb-card>
+          </ng-template>
+          <button
+            nbButton
+            outline
+            status="danger"
+            size="small"
+            (click)="openDialogHapusKegiatan(dialog, data['nama'])"
+          >
+            Hapus
+          </button>
+        </p>
+        <input
+          type="text"
+          [(ngModel)]="judulKegiatan"
+          nbInput
+          fullWidth
+          placeholder="Judul Kegiatan"
+        />
+        <div class="d-flex justify-content-end">
+          <button
+            nbButton
+            shape="semi-round"
+            status="info"
+            (click)="tambahKegiatan()"
+          >
+            Tambah
+          </button>
+        </div>
+      </nb-card-body>
+      <nb-card-footer>
+        <div class="d-flex justify-content-end">
+          <button
+            nbButton
+            fullWidth
+            class="next-button"
+            status="info"
+            (click)="simpan('top-right', 'success')"
+          >
+            Simpan
+          </button>
+        </div>
+      </nb-card-footer>
+    </nb-card>
+    <nb-card accent="info">
+      <nb-card-header>Dokumen Rapat</nb-card-header>
+      <nb-card-body>
+        <div class="form-group">
+          <!-- <label for="file">Choose File</label> -->
+          <input
+            nbInput
+            shape="semi-round"
+            type="file"
+            class="form-control"
+            placeholder="File Permohonan"
+            name="file_transaksi[]"
+            multiple
+            (change)="handleFileDokumen($event.target.files)"
+          />
+          <!-- <input type="file" id="file" (change)="handleFileDokumen($event.target.files)"> -->
+        </div>
+        <div class="d-flex justify-content-end">
+          <button nbButton fullWidth status="info" (click)="tambahFile()">
+            Tambah File
+          </button>
+        </div>
+
+        <p *ngFor="let data of detailRapat.filePendukung; let i = index">
+          {{ i + 1 }}. {{ data["name"] }}
+        </p>
+      </nb-card-body>
+    </nb-card>
+    <nb-card accent="info">
+      <nb-card-header>Peserta Rapat</nb-card-header>
+      <nb-card-body>
+        <div class="form-group">
+          <input
+            nbInput
+            shape="semi-round"
+            id="typeahead-basic"
+            type="text"
+            class="form-control"
+            [(ngModel)]="pesertaRapat"
+            [ngbTypeahead]="searchNamaPegawai"
+          />
+
+          <div class="d-flex justify-content-end">
+            <button nbButton fullWidth status="info" (click)="tambahPeserta()">
+              Simpan
+            </button>
+          </div>
+        </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">NIP</th>
+              <th scope="col">Nama</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of detailRapat.daftarPeserta">
+              <td>{{ data["nip"] }}</td>
+              <td>{{ data["nama"] }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </nb-card-body>
+    </nb-card>
+  </nb-card-body>
+</nb-card>

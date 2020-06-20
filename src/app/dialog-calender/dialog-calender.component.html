@@ -1,0 +1,21 @@
+<nb-card status="success">
+    <nb-card-header>
+        {{currentDetail.judul_rapat}}
+        <button nbButton shape="round" outline status="warning" size="small" (click)="close()"
+            style="float: right;">Close</button>
+    </nb-card-header>
+    <nb-card-body>
+        <p>Pimpinan Rapat : {{ currentDetail.pimpinan_rapat }}</p><br>
+        <p>Lokasi : {{ currentDetail.lokasi }}</p><br>
+        <p>OPD : {{ currentDetail.nama_skpd }}</p><br>
+        <p>Waktu Dimulai : {{ currentDetail.start }}</p><br>
+        <p>Waktu Selesai : {{ currentDetail.finish }}</p><br>
+    </nb-card-body>
+    <nb-card-footer>
+        <div class="d-flex justify-content-end">
+            <button nbButton shape="round" style="margin-right: 10px;" disabled id="Previous"
+                (click)="previous()">Previous</button>
+            <button nbButton shape="round" disabled id="Next" (click)="next()">Next</button>
+        </div>
+    </nb-card-footer>
+</nb-card>

@@ -1,0 +1,45 @@
+<nb-layout >
+  <nb-layout-header *ngIf ="status !='' && status != null" fixed>
+
+    <nb-icon (click)="toggle()" icon="menu-outline" style="margin-right: 20px"></nb-icon>
+    <a style="font-family:Palatino Linotype, Book Antiqua, Palatino, serif;">E - Ruang Rapat <img src="assets/img/Kota Madiun.png"> </a>
+    <nb-card-body>
+      <nb-actions size="small" style="float: right">
+        <nb-action (click)="logout()" icon="power-outline" nbTooltip="Logout" nbTooltipStatus="danger">
+        </nb-action>
+      </nb-actions>
+    </nb-card-body>
+  </nb-layout-header>
+  <nb-sidebar *ngIf ="status !=''" fixed tag="left" state="collapsed">
+    <!-- <p routerLink="/home">
+            <nb-icon icon="home-outline"></nb-icon>
+            Halaman Utama
+        </p>
+        <p routerLink="/ruangan">
+            <nb-icon icon="pin-outline"></nb-icon>
+            Daftar Ruangan
+        </p>
+        <p routerLink="/rapat">
+            <nb-icon icon="message-square-outline"></nb-icon>
+            Daftar Rapat
+        </p>
+        <p routerLink="/permohonan">
+            <nb-icon icon="email-outline"></nb-icon>
+            Daftar Permohonan
+        </p>
+        <p>
+            <nb-icon icon="arrow-down-outline"></nb-icon>
+            Master Data
+        </p> -->
+    <nb-menu [items]="items">
+    </nb-menu>
+  </nb-sidebar>
+
+  <nb-layout-column class="colored-column-warning">
+    <router-outlet></router-outlet>
+    <!-- Dashboard
+        <br>
+        {{role_name}} -->
+  </nb-layout-column>
+
+</nb-layout>

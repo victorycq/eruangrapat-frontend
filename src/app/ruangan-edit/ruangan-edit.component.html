@@ -1,0 +1,207 @@
+<nb-card accent="info">
+    <nb-card-header>Detail ruangan</nb-card-header>
+    <nb-card-body class="example-items-col">
+        <!-- <div class="form-group row">
+            <div class="col-10">
+                <label class="col-5 col-form-label">Nama Ruangan</label>
+                <input class="form-control" type="text" [(ngModel)] = "detailRuangan.nama" nbInput fullWidth placeholder="Nama Ruangan">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-10">
+                <label class="col-5 col-form-label">Lokasi</label>
+                <input type="text" [(ngModel)] = "detailRuangan.lokasi" nbInput fullWidth placeholder="Lokasi">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-10">
+                <label class="col-5 col-form-label">Kapasitas</label>
+                <input type="text" [(ngModel)] = "detailRuangan.kapasitas" nbInput fullWidth placeholder="Kapasitas">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-10">
+                <label class="col-5 col-form-label">OPD</label>
+                <input type="text" [(ngModel)] = "detailRuangan.opd" nbInput fullWidth placeholder="OPD">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-10">
+                    <label class="col-5 col-form-label">Keterangan</label>
+                <textarea nbInput [(ngModel)] = "detailRuangan.keterangan" fullWidth placeholder="Keterangan"></textarea>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-10">
+                    <label class="col-5 col-form-label">Koordinat X</label>
+                <input type="number" [(ngModel)] = "detailRuangan.koorX" nbInput fullWidth placeholder="Koordinat X">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-10">
+                    <label class="col-5 col-form-label">Koordinat Y</label>
+                <input type="number" [(ngModel)] = "detailRuangan.koorY" nbInput fullWidth placeholder="Koordinat Y">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-10">
+                    <label class="col-5 col-form-label">Contact</label>
+                <input type="number" [(ngModel)] = "detailRuangan.contact" nbInput fullWidth placeholder="Contact">
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <div class="col-10">
+                    <nb-checkbox *ngIf="fasilitasRuangan['mejaPimpinan'] ==1; else elseBlock" checked="true" (checkedChange)="toggle('mejaPimpinan',$event)">Meja Pimpinan</nb-checkbox>
+                    <ng-template #elseBlock>
+                            <nb-checkbox (checkedChange)="toggle('mejaPimpinan',$event)">Meja Pimpinan</nb-checkbox>
+                    </ng-template>
+                    <nb-checkbox *ngIf="fasilitasRuangan['podium'] ==1; else elseBlock1" checked="true" (checkedChange)="toggle('podium',$event)">Podium</nb-checkbox>
+                    <ng-template #elseBlock1>
+                            <nb-checkbox (checkedChange)="toggle('podium',$event)">Podium</nb-checkbox>
+                    </ng-template>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-10">
+                <nb-checkbox *ngIf="fasilitasRuangan['ruangTransit'] ==1; else elseBlock2" checked="true" (checkedChange)="toggle('ruangTransit',$event)">Ruang Transit</nb-checkbox>
+                <ng-template #elseBlock2>
+                        <nb-checkbox (checkedChange)="toggle('ruangTransit',$event)">Ruang Transit</nb-checkbox>
+                </ng-template>
+                <nb-checkbox *ngIf="fasilitasRuangan['ruangMakan'] ==1; else elseBlock3" checked="true" (checkedChange)="toggle('ruangMakan',$event)">Ruang Makan</nb-checkbox>
+                <ng-template #elseBlock3>
+                        <nb-checkbox (checkedChange)="toggle('ruangMakan',$event)">Ruang Makan</nb-checkbox>
+                </ng-template>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-10">
+                    <label class="col-5 col-form-label">Microphone</label>
+                <input type="number" [(ngModel)] = "fasilitasRuangan.microphone" nbInput fullWidth placeholder="Jumlah Micrphone">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-10">
+                    <label class="col-5 col-form-label">Proyektor</label>
+                <input type="number" [(ngModel)] = "fasilitasRuangan.projektor" nbInput fullWidth placeholder="Jumlah Proyektor">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-10">
+                    <label class="col-5 col-form-label">Papan Tulis</label>
+                <input type="number" [(ngModel)] = "fasilitasRuangan.papanTulis" nbInput fullWidth placeholder="Jumlah Papan Tulis">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-10">
+                    <label class="col-5 col-form-label">Meja Peserta</label>
+                <input type="number" [(ngModel)] = "fasilitasRuangan.mejaPeserta" nbInput fullWidth placeholder="Jumlah Meja Peserta">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-10">
+                    <label class="col-5 col-form-label">Kursi Peserta</label>
+                <input type="number" [(ngModel)] = "fasilitasRuangan.kursiPeserta" nbInput fullWidth placeholder="Jumlah Kursi Peserta">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-10">
+                    <label class="col-5 col-form-label">Air Conditioner</label>
+                <input type="number" [(ngModel)] = "fasilitasRuangan.ac" nbInput fullWidth placeholder="Jumlah Air Conditioner">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-10">
+                    <label class="col-5 col-form-label">LCD TV</label>
+                <input type="number" [(ngModel)] = "fasilitasRuangan.lcdTv" nbInput fullWidth placeholder="Jumlah LCD TV">
+            </div>
+        </div>
+        <button nbButton (click)="editRuangan('top-right', 'success')">Submit</button> -->
+
+        
+        <nb-stepper #stepper disableStepNavigation [linear]="false">
+
+            <nb-step [stepControl]="nameForm" label="Informasi">
+                <form #nameForm="ngForm" class="step-container">
+                    <div class="input-group">
+                        <input type="text" placeholder="Nama Ruangan" name="namaRuangan" required nbInput shape="semi-round"
+                            [(ngModel)]="detailRuangan.nama" fullWidth>
+                        <input type="text" placeholder="Lokasi" name="lokasi" required nbInput shape="semi-round"
+                            [(ngModel)]="detailRuangan.lokasi" fullWidth>
+                        <input type="number" placeholder="Kapasitas" name="kapasitas" required nbInput shape="semi-round"
+                            [(ngModel)]="detailRuangan.kapasitas" fullWidth>
+                            <nb-select placeholder={{opd.namaSkpd}} [(selected)]="opd.kodeSkpd" fullWidth shape="semi-round">
+                                    <nb-option [value] = "opd.kodeSkpd">
+                                           {{opd.namaSkpd}}
+                                        </nb-option>
+                                <nb-option *ngFor="let data of master_opd" [value]="data.kode_skpd">
+                                    {{data.nama_skpd}}
+                                </nb-option>
+                            </nb-select>
+                        <textarea placeholder="Keterangan" name="keterangan" required nbInput shape="semi-round"
+                            [(ngModel)]="detailRuangan.keterangan" fullWidth></textarea>
+                        <input type="number" placeholder="Koordinat X" name="koordinatX" required nbInput shape="semi-round"
+                            [(ngModel)]="detailRuangan.koorX" fullWidth>
+                        <input type="number" placeholder="Koordinat X" name="koordinatX" required nbInput shape="semi-round"
+                            [(ngModel)]="detailRuangan.koorY" fullWidth>
+                        <input type="number" placeholder="Contact" name="contact" required nbInput shape="semi-round"
+                            [(ngModel)]="detailRuangan.contact" fullWidth>
+                            
+
+                    </div>
+                    <button class="prev-button" nbButton disabled nbStepperNext shape="semi-round" style="margin-right: 10px">prev</button>
+                    <button class="next-button" nbButton nbStepperNext shape="semi-round">next</button>
+                </form>
+            </nb-step>
+
+            <nb-step [stepControl]="movieForm" label="Fasilitas">
+                <form #movieForm="ngForm" class="step-container">
+                    <div class="form-group row">
+                        <div class="col-10">
+                            <nb-checkbox *ngIf="fasilitasRuangan['mejaPimpinan'] ==1; else elseBlock" checked="true" (checkedChange)="toggle('mejaPimpinan',$event)">Meja Pimpinan</nb-checkbox>
+                            <ng-template #elseBlock>
+                                    <nb-checkbox (checkedChange)="toggle('mejaPimpinan',$event)">Meja Pimpinan</nb-checkbox>
+                            </ng-template>
+                            <nb-checkbox *ngIf="fasilitasRuangan['podium'] ==1; else elseBlock1" checked="true" (checkedChange)="toggle('podium',$event)">Podium</nb-checkbox>
+                            <ng-template #elseBlock1>
+                                    <nb-checkbox (checkedChange)="toggle('podium',$event)">Podium</nb-checkbox>
+                            </ng-template>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-10">
+                            <nb-checkbox *ngIf="fasilitasRuangan['ruangTransit'] ==1; else elseBlock2" checked="true" (checkedChange)="toggle('ruangTransit',$event)">Ruang Transit</nb-checkbox>
+                            <ng-template #elseBlock2>
+                                    <nb-checkbox (checkedChange)="toggle('ruangTransit',$event)">Ruang Transit</nb-checkbox>
+                            </ng-template>
+                            <nb-checkbox *ngIf="fasilitasRuangan['ruangMakan'] ==1; else elseBlock3" checked="true" (checkedChange)="toggle('ruangMakan',$event)">Ruang Makan</nb-checkbox>
+                            <ng-template #elseBlock3>
+                                    <nb-checkbox (checkedChange)="toggle('ruangMakan',$event)">Ruang Makan</nb-checkbox>
+                            </ng-template>
+                        </div>
+                    </div>
+                    <input type="number" placeholder="Jumlah Microphone" name="jumlahMicrophone" required nbInput shape="semi-round"
+                        [(ngModel)]="fasilitasRuangan.microphone" fullWidth>
+                    <input type="number" placeholder="Jumlah Proyektor" name="jumlahProyektor" required nbInput shape="semi-round"
+                        [(ngModel)]="fasilitasRuangan.projektor" fullWidth>
+                    <input type="number" placeholder="Jumlah Papan Tulis" name="jumlahPapanTulis" required nbInput shape="semi-round"
+                        [(ngModel)]="fasilitasRuangan.papanTulis" fullWidth>
+                    <input type="number" placeholder="Jumlah Meja Peserta" name="jumlahMejaPeserta" required nbInput shape="semi-round"
+                        [(ngModel)]="fasilitasRuangan.mejaPeserta" fullWidth>
+                    <input type="number" placeholder="Jumlah Kursi Peserta" name="jumlahKursiPeserta" required nbInput shape="semi-round"
+                        [(ngModel)]="fasilitasRuangan.kursiPeserta" fullWidth>
+                    <input type="number" placeholder="Jumlah Air Conditioner" name="jumlahAc" required nbInput shape="semi-round"
+                        [(ngModel)]="fasilitasRuangan.ac" fullWidth>
+                    <input type="number" placeholder="Jumlah LCD TV" name="jumlahLcdTv" required nbInput shape="semi-round"
+                        [(ngModel)]="fasilitasRuangan.lcdTv" fullWidth>
+
+                    <button class="prev-button" nbButton nbStepperPrevious shape="semi-round" style="margin-right: 10px">prev</button>
+                    <button class="next-button" status="success" nbButton shape="semi-round" (click)="editRuangan('top-right', 'success')">Submit</button>
+                </form>
+            </nb-step>
+        </nb-stepper>
+
+
+    </nb-card-body>
+</nb-card>

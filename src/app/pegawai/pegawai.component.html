@@ -1,0 +1,84 @@
+<nb-card accent="info" class="own-scroll">
+  <nb-card-header>
+    <div class="row">
+      <div class="col">
+        <p>Daftar Pegawai</p>
+      </div>
+      <div class="col">
+          <div class="d-flex justify-content-end"><nb-select shape="round" placeholder="Filter by Opd" [(selected)]="selectedOpd" (selectedChange)="filterByOpd()">
+          <nb-option value="All">All</nb-option>
+          <nb-option *ngFor="let opd of skpd" value="{{opd.nama_skpd}}">{{opd.nama_skpd}}</nb-option>
+        </nb-select></div>
+      </div>
+    </div>
+  </nb-card-header>
+  <nb-list nbInfiniteList [threshold]="400" (bottomThreshold)="loadNext()">
+    <nb-list-item>
+      <nb-accordion>
+        <nb-accordion-item *ngFor="let data of pegawai">
+            <nb-accordion-item-header>
+                <p>{{data.nip18}} - {{data.nama}}</p>
+              </nb-accordion-item-header>
+              <nb-accordion-item-body>
+                <div class="container">
+                  <div class="row">
+                    <div class="col">
+                      <p>Eselon : {{data.eselon}}</p>
+                    </div>
+                    <div class="col">
+                      <p>Pangkat : {{data.pangkat}}</p>
+                    </div>
+                  </div>
+                    <div class="row">
+                      <div class="col">
+                        <p>Status : {{data.status}}</p>
+                      </div>
+                      <div class="col">
+                        <p>Jabatan : {{data.jabatan}}</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <p>SKPD : {{data.nama_skpd}}</p>
+                      </div>
+                    </div>
+                </div>
+              </nb-accordion-item-body>
+        </nb-accordion-item>
+      </nb-accordion>
+    </nb-list-item>
+  </nb-list>
+</nb-card>
+<!--           
+          <nb-accordion>
+              <nb-accordion-item *ngFor="let data of pegawai">
+                <nb-accordion-item-header>
+                  {{data.nip18}} - {{data.nama}}
+                </nb-accordion-item-header>
+                <nb-accordion-item-body>
+                  <div class="container">
+                    <div class="row">
+                      <div class="col">
+                        <p>Eselon : {{data.eselon}}</p>
+                      </div>
+                      <div class="col">
+                        <p>Pangkat : {{data.pangkat}}</p>
+                      </div>
+                    </div>
+                      <div class="row">
+                        <div class="col">
+                          <p>Status : {{data.status}}</p>
+                        </div>
+                        <div class="col">
+                          <p>Jabatan : {{data.jabatan}}</p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                          <p>SKPD : {{data.nama_skpd}}</p>
+                        </div>
+                      </div>
+                  </div>
+                </nb-accordion-item-body>
+              </nb-accordion-item>
+            </nb-accordion> -->

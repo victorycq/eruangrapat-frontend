@@ -1,0 +1,121 @@
+<!-- <nb-card accent="info">
+    <nb-card-header>
+        Daftar OPD
+        <button nbButton status="success" size="small" routerLink="/tambahSkpd" style="float: right;">Tambah
+            SKPD</button>
+    </nb-card-header>
+    <nb-card-body>
+        <nb-accordion>
+            <nb-accordion-item *ngFor="let data of skpd">
+                <nb-accordion-item-header>
+                    {{data.nama_skpd}}
+                </nb-accordion-item-header>
+                <nb-accordion-item-body>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <p>Jumlah Level SKPD : {{data.jumlevel}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p>NIP Pimpinan : {{data.kepala_nip}}</p>
+                            </div>
+                            <div class="col">
+                                <p>NIP Bendahara : {{data.bendahara_nip}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p>Nama Pimpinan : {{data.kepala_nama}}</p>
+                            </div>
+                            <div class="col">
+                                <p>Nama Bendahara : {{data.bendahara_nama}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p>Pangkat Pimpinan : {{data.kepala_pangkat}}</p>
+                            </div>
+                            <div class="col">
+                                <p>Pangkat Bendahara : {{data.bendahara_pangkat}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p>Jabatan Pimpinan : {{data.kepala_jabatan}}</p>
+                            </div>
+                            <div class="col">
+                                <p>Jabatan Bendahara : {{data.bendahara_jabatan}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </nb-accordion-item-body>
+            </nb-accordion-item>
+        </nb-accordion>
+
+    </nb-card-body>
+</nb-card> -->
+
+<nb-card accent="info" class="own-scroll">
+    <nb-card-header>
+        Daftar OPD
+        <div *ngIf="roleId == 3 || roleId ==4">
+            <div class="d-flex justify-content-end"><button nbButton shape="round" status="success" size="small" routerLink="/tambahSkpd" style="float: right;"><b>Tambah
+                SKPD</b></button></div>
+        </div>
+
+    </nb-card-header>
+    <nb-list nbInfiniteList [threshold]="400" (bottomThreshold)="loadNext()">
+        <nb-list-item>
+            <nb-accordion>
+                <nb-accordion-item *ngFor="let data of skpd">
+                    <nb-accordion-item-header>
+                        <p>{{data.nama_skpd}}</p>
+                    </nb-accordion-item-header>
+                    <nb-accordion-item-body>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <p>Jumlah Level SKPD : {{data.jumlevel}}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p>NIP Pimpinan : {{data.kepala_nip}}</p>
+                                </div>
+                                <div class="col">
+                                    <p>NIP Bendahara : {{data.bendahara_nip}}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p>Nama Pimpinan : {{data.kepala_nama}}</p>
+                                </div>
+                                <div class="col">
+                                    <p>Nama Bendahara : {{data.bendahara_nama}}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p>Pangkat Pimpinan : {{data.kepala_pangkat}}</p>
+                                </div>
+                                <div class="col">
+                                    <p>Pangkat Bendahara : {{data.bendahara_pangkat}}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p>Jabatan Pimpinan : {{data.kepala_jabatan}}</p>
+                                </div>
+                                <div class="col">
+                                    <p>Jabatan Bendahara : {{data.bendahara_jabatan}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </nb-accordion-item-body>
+                </nb-accordion-item>
+            </nb-accordion>
+        </nb-list-item>
+    </nb-list>
+</nb-card>

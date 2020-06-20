@@ -1,0 +1,110 @@
+<nb-card accent="info">
+  <nb-card-header>Pinjam ruangan</nb-card-header>
+  <nb-card-body>
+    <p>Judul Rapat :</p>
+    <input
+      type="text"
+      nbInput
+      fullWidth
+      placeholder="Default"
+      [(ngModel)]="detailPinjaman['judulRapat']"
+    />
+    <p>Tanggal Rapat :</p>
+    <input
+      nbInput
+      placeholder="Pick Date"
+      [nbDatepicker]="formpicker"
+      [(ngModel)]="detailPinjaman['tanggalRapat']"
+    />
+    <nb-datepicker #formpicker></nb-datepicker>
+    <p>Waktu Mulai :</p>
+    <ngb-timepicker [(ngModel)]="detailPinjaman['waktuMulai']"></ngb-timepicker>
+    <p>Waktu Selesai :</p>
+    <ngb-timepicker
+      [(ngModel)]="detailPinjaman['waktuSelesai']"
+    ></ngb-timepicker>
+    <p *ngIf="role == 3">Nama Peminjam :</p>
+    <!-- <input type="text" nbInput fullWidth placeholder="Default" *ngIf="role ===3" [(ngModel)] = "detailPinjaman['namaPeminjam']"> -->
+    <input
+      id="typeahead-basic"
+      type="text"
+      class="form-control"
+      *ngIf="role == 3"
+      [(ngModel)]="detailPinjaman['namaPeminjam']"
+      [ngbTypeahead]="searchPeminjam"
+    />
+    <!-- <p>NIP Peminjam Ruangan</p>
+        <input type="text" nbInput value="tes" placeholder="NIP Peminjam" disabled> -->
+    <p>Nama Pemimpin Rapat :</p>
+    <input
+      id="typeahead-basic"
+      type="text"
+      class="form-control"
+      [(ngModel)]="detailPinjaman['namaPemimpinRapat']"
+      [ngbTypeahead]="searchNamaPemimpinRapat"
+    />
+    <!-- <p>NIP Pemimpin :</p>
+        <input type="text" nbInput placeholder="NIP Pemimpin" disabled> -->
+    <p>Keterangan :</p>
+    <textarea
+      nbInput
+      fullWidth
+      placeholder="Textarea"
+      [(ngModel)]="detailPinjaman['keterangan']"
+    ></textarea>
+    <p>Nama Notulen :</p>
+    <input
+      id="typeahead-basic"
+      type="text"
+      class="form-control"
+      [(ngModel)]="detailPinjaman['namaNotulen']"
+      [ngbTypeahead]="searchNotulen"
+    />
+    <!-- <p>NIP Notulen :</p>
+        <input type="text" nbInput placeholder="Disabled Text field" disabled> -->
+    <p>File Permohonan :</p>
+    <!-- <div class="form-group">
+            <label for="file">Choose File</label>
+            <input type="file"
+                   id="file"
+                   (change)="handleFilePermohonan($event.target.files)">
+        </div>
+        <p>File Undangan :</p>
+        <div class="form-group">
+            <label for="file">Choose File</label>
+            <input type="file"
+                   id="file"
+                   (change)="handleFileUndangan($event.target.files)">
+        </div> -->
+    <div class="form-group">
+      <input
+        type="file"
+        class="form-control"
+        placeholder="File Permohonan"
+        name="file_transaksi[]"
+        multiple
+        (change)="handleFileDokumen($event.target.files)"
+      />
+    </div>
+    <nb-select
+      *ngIf="role == 3"
+      placeholder="Pilih OPD"
+      ng-model="opd"
+      fullWidth
+      [(selected)]="detailPinjaman['opd']"
+    >
+      <nb-option *ngFor="let data of master_opd" [value]="data.kode_skpd">
+        {{ data.nama_skpd }}
+      </nb-option>
+    </nb-select>
+    <button
+      nbButton
+      fullWidth
+      status="primary"
+      (click)="pinjamRuangan()"
+      style="margin-top: 15px;"
+    >
+      Submit
+    </button>
+  </nb-card-body>
+</nb-card>

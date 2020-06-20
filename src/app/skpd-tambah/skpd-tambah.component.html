@@ -1,0 +1,32 @@
+<nb-card accent="info">
+    <nb-card-header>Pinjam ruangan</nb-card-header>
+    <nb-card-body>
+        <p><input type="text" nbInput fullWidth placeholder="Kode SKPD" [(ngModel)]="skpd.kode"></p>
+        <p><input type="text" nbInput fullWidth placeholder="Nama SKPD" [(ngModel)]="skpd.nama"></p>
+        <p><input type="text" nbInput fullWidth placeholder="Jumlah Level" [(ngModel)]="skpd.jumlahLevel"></p>
+
+        <p><input id="typeahead-basic" type="text" placeholder="Kepala SKPD" nbInput fullWidth class="form-control"
+                [ngbTypeahead]="searchPegawai" [(ngModel)]="kepalaSkpd" /></p>
+
+        <p><input id="typeahead-basic" type="text" placeholder="Bendahara" nbInput fullWidth class="form-control"
+                [ngbTypeahead]="searchPegawai" [(ngModel)]="bendahara"/></p>
+
+        <p><input type="text" nbInput fullWidth placeholder="Pangkat Kepala SKPD" [(ngModel)]="skpd.pangkatKepalaSkpd"></p>
+
+        <p><input type="text" nbInput fullWidth placeholder="Pangkat Bendahara" [(ngModel)]="skpd.pangkatBendahara"></p>
+
+        <p><input type="text" nbInput fullWidth placeholder="Jabatan Kepala SKPD" [(ngModel)]="skpd.jabatanKepalaSkpd"></p>
+
+        <p><input type="text" nbInput fullWidth placeholder="Jabatan Bendahara" [(ngModel)]="skpd.jabatanBendahara"></p>
+
+
+        <button nbButton status="primary" (click)="storeSkpd()" style="float: right;">Submit</button>
+    </nb-card-body>
+</nb-card>
+<!-- <nb-card accent="info">
+    <nb-card-header>Pinjam ruangan</nb-card-header>
+    <nb-card-body>
+        <p>Kepala SKPD :<input type="text" nbInput fullWidth></p>
+        <p>Nama SKPD : <input type="text" nbInput fullWidth></p>
+    </nb-card-body>
+  </nb-card> -->

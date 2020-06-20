@@ -1,0 +1,25 @@
+<nb-layout>
+    <nb-layout-header fixed>
+
+        <nb-icon (click)="toggle()" icon="menu-outline" style="margin-right: 20px"></nb-icon>
+        E - Ruang Rapat
+        <nb-card-body>
+            <nb-actions size="small" style="float: right">
+                <nb-action (click)="logout()" icon="power-outline" nbTooltip="Logout" nbTooltipStatus="danger">
+                </nb-action>
+            </nb-actions>
+        </nb-card-body>
+    </nb-layout-header>
+    <nb-sidebar tag="left" state="collapsed">
+        <nb-menu [items]="items">
+        </nb-menu>
+    </nb-sidebar>
+
+    <nb-layout-column class="colored-column-warning">
+        <router-outlet></router-outlet>
+        <!-- Dashboard
+        <br>
+        {{role_name}} -->
+    </nb-layout-column>
+
+</nb-layout>

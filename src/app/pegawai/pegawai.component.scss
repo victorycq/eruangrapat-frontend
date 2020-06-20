@@ -1,0 +1,15 @@
+nb-card {
+    flex: 1 1 45%;
+    margin: 0 2.5%;
+  
+    &.own-scroll {
+      height: 50rem;
+    }
+  }
+  p{
+  	font-family:Palatino Linotype, Book Antiqua, Palatino, serif;
+  }
+  nb-accordion-item-header{
+  	
+  	font-family:Palatino Linotype, Book Antiqua, Palatino, serif;
+  }

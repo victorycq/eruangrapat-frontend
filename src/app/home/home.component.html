@@ -1,0 +1,42 @@
+<!-- <nb-card>
+  <nb-card-body>      -->
+      <div class="d-flex justify-content-end">
+
+      </div>
+        <H4>Dashboard</H4>
+    <p>{{userlogin}}</p> 
+<div class="d-flex justify-content-center" style="margin-bottom: 20px;">
+
+  <nb-calendar [(date)]="date" [filter]="filter" [boundingMonth]="true" (dateChange)="cek($event)">
+  </nb-calendar>
+</div>
+<nb-card accent="info">
+    <nb-card-header>ACARA HARI INI</nb-card-header>
+    <nb-card-body>
+        <div *ngIf="acara.length == 0; else elseBlock">Tidak Acara Hari Ini</div>
+        <ng-template #elseBlock>
+            <nb-card status="success" *ngFor="let data of acara">
+                <nb-card-header>{{data.judul_rapat}}</nb-card-header>
+                <nb-card-body>
+                    <p class="a">Pimpinan Rapat : {{ data.pimpinan_rapat }}</p><br>
+                    <p>Lokasi : {{ data.lokasi }}</p><br>
+                    <p>OPD : {{ data.nama_skpd }}</p><br>
+                    <p>Waktu Dimulai : {{ data.start }}</p><br>
+                    <p>Waktu Selesai : {{ data.finish }}</p><br>
+                </nb-card-body>
+              </nb-card>
+        </ng-template>
+
+    </nb-card-body>
+  </nb-card>
+<!-- <ng-template #contentTemplate let-data>
+    <p>Pimpinan Rapat : {{ data.pemimpin }}</p><br>
+    <p>Lokasi : {{ data.lokasi }}</p><br>
+    <p>OPD : {{ data.opd }}</p><br>
+    <p>Waktu Dimulai : {{ data.start }}</p><br>
+    <p>Waktu Selesai : {{ data.finish }}</p><br>
+
+  </ng-template> -->
+<!--   
+  </nb-card-body>
+</nb-card> -->

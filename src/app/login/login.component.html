@@ -1,0 +1,34 @@
+<head>
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  />
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<h4>E - Ruang Rapat</h4>
+<img src="assets/img/Kota Madiun.png" />
+<h3>
+  Log In
+</h3>
+<div class="container">
+  <div class="form-group">
+    <input
+      type="text"
+      [(ngModel)]="username"
+      class="form-control"
+      placeholder="Username"
+    />
+  </div>
+  <div class="form-group">
+    <input
+      type="password"
+      [(ngModel)]="password"
+      class="form-control"
+      placeholder="Password"
+    />
+  </div>
+  <button (click)="Authentication()" type="button" class="btn btn-primary">
+    <B>LOGIN</B>
+  </button>
+</div>

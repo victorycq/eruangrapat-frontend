@@ -1,0 +1,64 @@
+<nb-card accent="info">
+    <nb-card-header><b>Daftar</b> Peminjaman</nb-card-header>
+    <nb-card-body>
+        <div *ngIf="permohonan.length == 0; else rapat">Tidak Ada History Permohonan</div>
+        <ng-template #rapat>
+            <nb-card *ngFor="let data of permohonan" accent="info">
+                <nb-card-header>{{data.judul}}</nb-card-header>
+                <nb-card-body>
+                    <p>Tanggal : {{data.tanggal}}</p>
+                    <p>Mulai : {{data.start}}</p>
+                    <p>Selesai : {{data.finish}}</p>
+                </nb-card-body>
+                <nb-card-footer>
+                    <ng-container *ngIf="data.status === 'Disetujui';else second">
+                        <button nbButton outline status="success">{{data.status}}</button>
+                    </ng-container>
+                    <ng-template #second>
+                        <ng-container *ngIf="data.status === 'Belum disetujui';else third">
+                            <button nbButton outline status="warning">{{data.status}}</button>
+                        </ng-container>
+                    </ng-template>
+                    <ng-template #third>
+                        <button nbButton outline status="danger">{{data.status}}</button>
+                    </ng-template>
+
+                    <button nbButton status="info" routerLink="/detailPermohonan/{{data.id}}"
+                        style="float: right">Detail</button>
+                </nb-card-footer>
+            </nb-card>
+        </ng-template>
+
+
+        <!-- <div *ngFor="let data of permohonan">
+            <div *ngIf="data.status == 'Disetujui'; else elseBlock">
+                <nb-card status="success">
+                    <nb-card-header>{{data.judul}}</nb-card-header>
+                    <nb-card-body>
+                        <p>Tanggal : {{data.tanggal}}</p>
+                        <p>Mulai : {{data.start}}</p>
+                        <p>Selesai : {{data.finish}}</p>
+                    </nb-card-body>
+                    <nb-card-footer>
+                        Status : {{data.status}}
+                        <button nbButton status="info" style="float: right">Detail</button>
+                    </nb-card-footer>
+                </nb-card>
+            </div>
+            <ng-template #elseBlock>
+                <nb-card status="warning">
+                    <nb-card-header>{{data.judul}}</nb-card-header>
+                    <nb-card-body>
+                        <p>Tanggal : {{data.tanggal}}</p>
+                        <p>Mulai : {{data.start}}</p>
+                        <p>Selesai : {{data.finish}}</p>
+                    </nb-card-body>
+                    <nb-card-footer>
+                        Status : {{data.status}}
+                        <button nbButton status="info" style="float: right">Detail</button>
+                    </nb-card-footer>
+                </nb-card>
+            </ng-template>
+        </div>-->
+    </nb-card-body>
+</nb-card>

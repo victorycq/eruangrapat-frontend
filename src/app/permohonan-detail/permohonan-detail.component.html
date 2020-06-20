@@ -1,0 +1,72 @@
+<nb-card accent="info">
+  <nb-card-header>Informasi Permohonan</nb-card-header>
+  <nb-card-body>
+    Pegawai dengan nomor Induk {{permohonan.nip_pemesan}}
+    telah mengajukan permohonan untuk meminjam ruangan dalam rangka mengadakan {{permohonan.judul_rapat}}
+    yang diadakan di {{permohonan.nama}}. Permohonan telah dibuat dengan informasi sebagai berikut:
+    <p><b>Waktu Mulai :</b> {{permohonan.start}}</p>
+    <p><b>Waktu Selesai :</b> {{permohonan.finish}}</p>
+
+    <div *ngIf="filePermohonan.length ==0; else elseBlock">
+      <p><b>Dokumen Pendukung :</b>Tidak Ada</p>
+    </div>
+    <ng-template #elseBlock>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">File</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of filePermohonan">
+            <td>{{data['namafile']}}</td>
+            <td>
+              <button nbButton shape="semi-round" outline status="warning" size="small"
+                (click)="downloadFileTransaksi(data['transaksi_id'],data['namafile'])">Download</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-template>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">File</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of filePermohonan">
+          <td>{{data['namafile']}}</td>
+          <td>
+            <button nbButton shape="semi-round" outline status="warning" size="small"
+              (click)="downloadFileTransaksi(data['transaksi_id'],data['namafile'])">Download</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><b>Pemimpin Rapat :</b> {{permohonan.pimpinan_rapat}}</p>
+    <p><b>Notulen : </b>{{permohonan.nama_notulen}}</p>
+    <b>Status : </b>
+    <ng-container *ngIf="permohonan.status === 'Disetujui';else second">
+      <button nbButton outline status="success">{{permohonan.status}}</button>
+    </ng-container>
+    <ng-template #second>
+      <ng-container *ngIf="permohonan.status === 'Belum disetujui';else third">
+        <button nbButton outline status="warning">{{permohonan.status}}</button>
+      </ng-container>
+    </ng-template>
+    <ng-template #third>
+      <button nbButton outline status="danger">{{permohonan.status}}</button>
+    </ng-template><br>
+    <nb-select shape="semi-round" placeholder="Pilih Status Permohonan" [(selected)]="status">
+      <nb-option value="Disetujui">Setujui Permohonan</nb-option>
+      <nb-option value="Ditolak">Tolak Permohonan</nb-option>
+    </nb-select>
+    <button *ngIf="status!==''; else elseBlock" nbButton hero status="primary"
+      (click)="simpanPerubahan()">Simpan</button>
+    <ng-template #elseBlock><button nbButton disabled>Simpan</button></ng-template>
+  </nb-card-body>
+</nb-card>

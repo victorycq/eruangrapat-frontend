@@ -1,0 +1,16 @@
+<nb-card accent="info">
+    <nb-card-header>Daftar Rapat</nb-card-header>
+    <nb-card-body>
+        <nb-card status="success" *ngFor="let data of rapat">
+            <nb-card-header><b>{{data.judul_rapat}}</b></nb-card-header>
+            <nb-card-body class="classs">
+              <p>Lokasi    : {{data.nama}} </p>
+              <p>Waktu Mulai     : {{data.start}}</p> 
+              <p>Waktu Selesai : {{data.finish}}</p>
+              <p>OPD    : {{data.nama_skpd}}</p>
+            </nb-card-body>
+            <nb-card-footer><button nbButton status="info" routerLink="/detailRapat/{{data.id_notulen}}" style="float:right">Detail</button></nb-card-footer>
+          </nb-card>
+          
+    </nb-card-body>
+  </nb-card>

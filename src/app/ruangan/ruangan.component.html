@@ -1,0 +1,72 @@
+<nb-card accent="info">
+  <nb-card-header>
+    Daftar Ruangan
+    <div class="d-flex justify-content-end">
+      <button
+        nbButton
+        *ngIf="roleId == 3"
+        status="success"
+        size="small"
+        routerLink="/tambahRuangan"
+        style="float: right;"
+      >
+        Tambah Ruangan
+      </button>
+    </div>
+  </nb-card-header>
+  <nb-card-body>
+    <nb-card *ngFor="let data of ruangan" accent="info">
+      <nb-card-header>
+        <div class="row">
+          <div class="col-8">
+            <p>{{ data.nama }}</p>
+          </div>
+          <div class="col-4">
+            <nb-select
+              placeholder="Action"
+              style="float: right;"
+              [(selected)]="selectedItem"
+              shape="semi-round"
+              hero
+            >
+              <nb-option routerLink="/detail/{{ data.id }}">Detail</nb-option>
+              <nb-option routerLink="/pinjam/{{ data.id }}">Pinjam</nb-option>
+              <nb-option
+                *ngIf="roleId == 3 || roleId == 4"
+                routerLink="/edit/{{ data.id }}"
+                >Edit</nb-option
+              >
+              <nb-option
+                *ngIf="roleId == 3 || roleId == 4"
+                (click)="deleteRuangan(data.id)"
+                >Hapus</nb-option
+              >
+            </nb-select>
+          </div>
+        </div>
+      </nb-card-header>
+      <nb-card-body>
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <p>OPD : {{ data.nama_skpd }}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <p>Lokasi : {{ data.lokasi }}</p>
+            </div>
+            <div class="col">
+              <p>Contact : {{ data.contact }}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <p>Kapasitas : {{ data.kapasitas }}</p>
+            </div>
+          </div>
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </nb-card-body>
+</nb-card>
