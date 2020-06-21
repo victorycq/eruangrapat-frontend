@@ -1,19 +1,30 @@
 <nb-card accent="info">
   <nb-card-header>
     Detail Rapat
-    <div class="d-flex justify-content-end"><button nbButton status="success" size="small" (click)="editRapat()" style="float: right;">Edit Rapat</button></div>
+    <div class="d-flex justify-content-end">
+      <button
+        nbButton
+        status="success"
+        size="small"
+        (click)="editRapat()"
+        style="float: right;"
+      >
+        Edit Rapat
+      </button>
+    </div>
   </nb-card-header>
   <nb-card-body>
     <nb-card accent="info">
-      <nb-card-header><b>Informasi</b> {{detailRapat.judulRapat}}</nb-card-header>
+      <nb-card-header><b>Informasi</b></nb-card-header>
       <nb-card-body>
-        <p><b>Sidang/Rapat :</b> {{detailRapat.judulRapat}}</p>
-        <p><b>Tanggal :</b> {{detailRapat.tanggal}}</p>
-        <p><b>Jam :</b> {{detailRapat.jam}}</p>
-        <div *ngIf="detailRapat.acara.length !=0; else elseBlock">
-
-          <p><b>Acara :</b> </p>
-          <p *ngFor="let data of detailRapat.acara; let i = index">{{i+1}}. {{data['nama']}}</p>
+        <p><b>Sidang/Rapat :</b> {{ detailRapat.judulRapat }}</p>
+        <p><b>Tanggal :</b> {{ detailRapat.tanggal }}</p>
+        <p><b>Jam :</b> {{ detailRapat.jam }}</p>
+        <div *ngIf="detailRapat.acara.length != 0; else elseBlock">
+          <p><b>Acara :</b></p>
+          <p *ngFor="let data of detailRapat.acara; let i = index">
+            {{ i + 1 }}. {{ data["nama"] }}
+          </p>
         </div>
         <ng-template #elseBlock><b>Acara</b> Tidak Ada</ng-template>
         <nb-accordion>
@@ -22,7 +33,7 @@
               KATA PEMBUKA
             </nb-accordion-item-header>
             <nb-accordion-item-body>
-              {{detailRapat.kataPembuka}}
+              {{ detailRapat.kataPembuka }}
             </nb-accordion-item-body>
           </nb-accordion-item>
           <nb-accordion-item>
@@ -30,7 +41,7 @@
               PEMBAHASAN
             </nb-accordion-item-header>
             <nb-accordion-item-body>
-              {{detailRapat.pembahasan}}
+              {{ detailRapat.pembahasan }}
             </nb-accordion-item-body>
           </nb-accordion-item>
           <nb-accordion-item>
@@ -38,17 +49,18 @@
               PERATURAN
             </nb-accordion-item-header>
             <nb-accordion-item-body>
-              {{detailRapat.peraturan}}
+              {{ detailRapat.peraturan }}
             </nb-accordion-item-body>
           </nb-accordion-item>
         </nb-accordion>
-        <p><b>Ketua :</b> {{detailRapat.ketua}}</p>
-        <p><b>Sekertaris :</b> {{detailRapat.sekretaris}}</p>
-        <p><b>Pencatat :</b> {{detailRapat.pencatat}}</p>
-        <div *ngIf="detailRapat.acara.length !=0; else elseBlock">
-
-          <p><b>Kegiatan :</b> </p>
-          <p *ngFor="let data of detailRapat.kegiatan; let i = index">{{i+1}}. {{data['nama']}}</p>
+        <p><b>Ketua :</b> {{ detailRapat.ketua }}</p>
+        <p><b>Sekertaris :</b> {{ detailRapat.sekretaris }}</p>
+        <p><b>Pencatat :</b> {{ detailRapat.pencatat }}</p>
+        <div *ngIf="detailRapat.acara.length != 0; else elseBlock">
+          <p><b>Kegiatan :</b></p>
+          <p *ngFor="let data of detailRapat.kegiatan; let i = index">
+            {{ i + 1 }}. {{ data["nama"] }}
+          </p>
         </div>
         <ng-template #elseBlock><b>Kegiatan : </b> Tidak Ada</ng-template>
       </nb-card-body>
@@ -65,41 +77,50 @@
           </thead>
           <tbody>
             <tr *ngFor="let data of detailRapat.daftarPeserta">
-              <td>{{data['nip']}}</td>
-              <td>{{data['nama']}}</td>
+              <td>{{ data["nip"] }}</td>
+              <td>{{ data["nama"] }}</td>
             </tr>
           </tbody>
         </table>
       </nb-card-body>
     </nb-card>
     <nb-card accent="info">
-        <nb-card-header><b>Dokumen</b> Rapat</nb-card-header>
-        <nb-card-body>
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">File</th>
-                <th scope="col">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let data of detailRapat.filePendukung">
-                <td>{{data['name']}}</td>
-                <td>
-                    <button nbButton shape="semi-round" outline status="warning" size="small"
-                    (click)="downloadFilePendukung(data['notulen_id'],data['name'])">Download</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </nb-card-body>
-      </nb-card>
+      <nb-card-header><b>Dokumen</b> Rapat</nb-card-header>
+      <nb-card-body>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">File</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of detailRapat.filePendukung">
+              <td>{{ data["name"] }}</td>
+              <td>
+                <button
+                  nbButton
+                  shape="semi-round"
+                  outline
+                  status="warning"
+                  size="small"
+                  (click)="
+                    downloadFilePendukung(data['notulen_id'], data['name'])
+                  "
+                >
+                  Download
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </nb-card-body>
+    </nb-card>
     <nb-card accent="info" *ngIf="token === true">
       <nb-card-header><b>Token</b></nb-card-header>
       <nb-card-body>
-        {{detailRapat.token}}
+        {{ detailRapat.token }}
       </nb-card-body>
     </nb-card>
-
   </nb-card-body>
 </nb-card>

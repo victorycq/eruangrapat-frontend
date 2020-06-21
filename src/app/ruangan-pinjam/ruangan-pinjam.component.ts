@@ -169,12 +169,13 @@ export class RuanganPinjamComponent implements OnInit {
           `Ruangan Berhasil Di Tambahkan`,
           { position, status }
         );
-        this.router.navigate(["/ruangan"]);
+        this.router.navigate(["/permohonan"]);
       },
-      (error) => {
+      async (error) => {
         if ((error["status"] = 401)) {
-          localStorage.clear();
-          this.router.navigate(["login"]);
+          console.log(error);
+          // await localStorage.clear();
+          // this.router.navigate(["login"]);
         } else {
           console.log(error["status"]);
         }

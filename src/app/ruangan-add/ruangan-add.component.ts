@@ -118,12 +118,27 @@ export class RuanganAddComponent implements OnInit {
       }
     }
   }
-  async tambahRuangan(position, status) {
-    const self = this;
-    await navigator.geolocation.getCurrentPosition(function (position) {
-      self.detailRuangan.koorX = position.coords.longitude.toString();
-      self.detailRuangan.koorY = position.coords.latitude.toString();
+  getPosition(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(
+        (resp) => {
+          resolve({
+            longitude: resp.coords.longitude,
+            latitude: resp.coords.latitude,
+          });
+        },
+        (err) => {
+          reject(err);
+        }
+      );
     });
+  }
+  async tambahRuangan(position, status) {
+    await this.getPosition().then((position) => {
+      this.detailRuangan.koorX = position.longitude;
+      this.detailRuangan.koorY = position.latitude;
+    });
+
     console.log(this.detailRuangan);
     this.us.tambahRuangan(this.detailRuangan, this.fasilitasRuangan).subscribe(
       (data) => {

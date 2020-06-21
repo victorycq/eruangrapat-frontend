@@ -34,7 +34,6 @@ export class RapatEditComponent implements OnInit {
     private dialogService: NbDialogService,
     private toastrService: NbToastrService
   ) {}
-
   detailRapat: detailRapat = {
     idNotulen: "",
     judulRapat: "",
@@ -49,6 +48,7 @@ export class RapatEditComponent implements OnInit {
     daftarPeserta: [],
     filePendukung: [],
   };
+  idRapat: any = this.route.snapshot.params.id;
   judulAcara: string;
   judulKegiatan: string;
   pesertaRapat: string;
@@ -129,6 +129,7 @@ export class RapatEditComponent implements OnInit {
     this.detailRapat.kegiatan.push({ nama: this.judulKegiatan });
   }
   simpan(position, status) {
+    console.log(this.detailRapat.kegiatan);
     this.us
       .simpanDetailRapat(this.detailRapat.idNotulen, this.detailRapat)
       .subscribe(
