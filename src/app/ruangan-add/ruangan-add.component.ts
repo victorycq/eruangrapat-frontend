@@ -147,6 +147,7 @@ export class RuanganAddComponent implements OnInit {
           `Ruangan Berhasil Di Tambahkan`,
           { position, status }
         );
+        this.router.navigate(["/ruangan"]);
       },
       (error) => {
         if ((error["status"] = 401)) {

@@ -47,7 +47,7 @@ export class RuanganPinjamComponent implements OnInit {
     keterangan: "",
     namaNotulen: "",
     fileTransaksi: null,
-    opd: localStorage.getItem("namaOpd"),
+    opd: localStorage.getItem("opd"),
   };
   role = localStorage.getItem("role_id");
   namaPegawai: any = [];

@@ -28,8 +28,10 @@ export class PermohonanComponent implements OnInit {
       (data) => {
         console.log(data);
         for (let items of data["rapat"]) {
+          console.log(localStorage.getItem("nip") + " " + items["nip_pemesan"]);
           if (
-            localStorage.getItem("namaOpd") == items["nama_skpd"] ||
+            localStorage.getItem("nip").substring(0, 15) ==
+              items["nip_pemesan"].substring(0, 15) ||
             localStorage.getItem("role_id") == "3"
           ) {
             this.permohonan.push({

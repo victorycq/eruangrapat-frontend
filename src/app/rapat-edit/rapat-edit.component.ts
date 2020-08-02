@@ -96,7 +96,7 @@ export class RapatEditComponent implements OnInit {
     this.us.getPegawai().subscribe(
       (data) => {
         for (let pegawai of data["pegawai"]) {
-          this.namaPegawai.push(pegawai["nip18"] + " - " + pegawai["nama"]);
+          this.namaPegawai.push(pegawai["nip"] + " - " + pegawai["nama"]);
           this.namaPegawai.slice();
         }
       },

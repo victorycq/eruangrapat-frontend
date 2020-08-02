@@ -1,10 +1,34 @@
 <nb-card>
-    <nb-card-header>Verifikasi Token</nb-card-header>
-    <nb-card-body>
-        <input type="text" nbInput fullWidth placeholder="Default" [(ngModel)]="token">
-    </nb-card-body>
-    <nb-card-footer>
-        <button nbButton shape="semi-round" status="warning" (click)="cancel()" style="margin-right: 10px;">Cancel</button>
-        <button nbButton shape="semi-round" status="success" (click)="verifikasiToken()">Submit</button>
-    </nb-card-footer>
+  <nb-card-header>Verifikasi Token</nb-card-header>
+  <nb-card-body>
+    <input
+      type="text"
+      nbInput
+      fullWidth
+      placeholder="Default"
+      [(ngModel)]="token"
+    />
+    <span class="message__error login" aria-live="polite" *ngIf="showError"
+      >Token salah</span
+    >
+  </nb-card-body>
+  <nb-card-footer>
+    <button
+      nbButton
+      shape="semi-round"
+      status="warning"
+      (click)="cancel()"
+      style="margin-right: 10px;"
+    >
+      Cancel
+    </button>
+    <button
+      nbButton
+      shape="semi-round"
+      status="success"
+      (click)="verifikasiToken()"
+    >
+      Submit
+    </button>
+  </nb-card-footer>
 </nb-card>

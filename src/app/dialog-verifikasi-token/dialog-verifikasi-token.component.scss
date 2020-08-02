@@ -1,0 +1,9 @@
+.message__error {
+  display: flex;
+  color: red;
+  font-size: 0.8rem;
+  &.login {
+    font-weight: bold;
+    margin-top: 10px;
+  }
+}
