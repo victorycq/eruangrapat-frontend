@@ -8,6 +8,7 @@ import {
 import { tap, retry } from "rxjs/operators";
 import { Observable } from "rxjs";
 import { analyzeAndValidateNgModules } from "@angular/compiler";
+import { environment } from "src/environments/environment";
 
 @Injectable({
   providedIn: "root",
@@ -15,13 +16,13 @@ import { analyzeAndValidateNgModules } from "@angular/compiler";
 export class RapatService {
   constructor(private httpClient: HttpClient) {}
   getPegawai(): Observable<any> {
-    return this.httpClient.post("http://localhost:8000/pegawai", {
+    return this.httpClient.post(environment.apiURL + "pegawai", {
       token: localStorage.getItem("access_token"),
     });
   }
   geAlltRapat(): Observable<any> {
     return this.httpClient
-      .post("http://localhost:8000/rapat", {
+      .post(environment.apiURL + "rapat", {
         token: localStorage.getItem("access_token"),
       })
       .pipe(
@@ -31,18 +32,18 @@ export class RapatService {
       );
   }
   getOpd(): Observable<any> {
-    return this.httpClient.post("http://localhost:8000/SKPD", {
+    return this.httpClient.post(environment.apiURL + "SKPD", {
       token: localStorage.getItem("access_token"),
     });
   }
   getRapatOpd(): Observable<any> {
-    return this.httpClient.post("http://localhost:8000/rapatOpd", {
+    return this.httpClient.post(environment.apiURL + "rapatOpd", {
       token: localStorage.getItem("access_token"),
       idOpd: localStorage.getItem("opd"),
     });
   }
   getDetailRapat(id): Observable<any> {
-    return this.httpClient.post("http://localhost:8000/rapatDetail", {
+    return this.httpClient.post(environment.apiURL + "rapatDetail", {
       token: localStorage.getItem("access_token"),
       idTransaksi: id,
     });
@@ -61,7 +62,7 @@ export class RapatService {
     headers.append("Content-Type", "multipart/form-data");
     headers.append("Accept", "application/json");
     return this.httpClient.post(
-      "http://localhost:8000/rapatTambahFilePendukung",
+      environment.apiURL + "rapatTambahFilePendukung",
       formData,
       {
         headers: headers,
@@ -69,40 +70,41 @@ export class RapatService {
     );
   }
   tambahPeserta(idNotulen, namaPeserta) {
-    return this.httpClient.post("http://localhost:8000/rapatTambahPeserta", {
+    return this.httpClient.post(environment.apiURL + "rapatTambahPeserta", {
       token: localStorage.getItem("access_token"),
       idNotulen: idNotulen,
       namaPeserta: namaPeserta,
     });
   }
   simpanDetailRapat(idNotulen, detailRapat) {
-    return this.httpClient.post("http://localhost:8000/rapatEditDetail", {
+    return this.httpClient.post(environment.apiURL + "rapatEditDetail", {
       token: localStorage.getItem("access_token"),
       idNotulen: idNotulen,
       detailRapat: detailRapat,
     });
   }
   verifikasiToken(token) {
-    return this.httpClient.post("http://localhost:8000/verifikasiToken", {
+    return this.httpClient.post(environment.apiURL + "verifikasiToken", {
       token: localStorage.getItem("access_token"),
       tokenRapat: token,
     });
   }
   hapusAcara(namaAcara) {
-    return this.httpClient.post("http://localhost:8000/rapatHapusAcara", {
+    return this.httpClient.post(environment.apiURL + "rapatHapusAcara", {
       token: localStorage.getItem("access_token"),
       namaAcara: namaAcara,
     });
   }
   hapusKegiatan(namaKegiatan) {
-    return this.httpClient.post("http://localhost:8000/rapatHapusKegiatan", {
+    return this.httpClient.post(environment.apiURL + "rapatHapusKegiatan", {
       token: localStorage.getItem("access_token"),
       namaKegiatan: namaKegiatan,
     });
   }
   downloadFilePendukung(idNotulen, namaFile, extension): Observable<any> {
     return this.httpClient.get(
-      "http://localhost:8000/rapatDownloadFilePendukung/" +
+      environment.apiURL +
+        "rapatDownloadFilePendukung/" +
         idNotulen +
         "/" +
         namaFile +

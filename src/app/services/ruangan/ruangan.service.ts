@@ -7,6 +7,7 @@ import {
 } from "@angular/common/http";
 import { tap, retry } from "rxjs/operators";
 import { Observable } from "rxjs";
+import { environment } from "src/environments/environment";
 
 @Injectable({
   providedIn: "root",
@@ -16,7 +17,7 @@ export class RuanganService {
 
   getRuangan(): Observable<any> {
     return this.httpClient
-      .post("http://localhost:8000/ruangan", {
+      .post(environment.apiURL + "ruangan", {
         token: localStorage.getItem("access_token"),
         opd: "tes",
       })
@@ -27,23 +28,23 @@ export class RuanganService {
       );
   }
   getDetailRuangan(id): Observable<any> {
-    return this.httpClient.post("http://localhost:8000/ruanganDetail", {
+    return this.httpClient.post(environment.apiURL + "ruanganDetail", {
       token: localStorage.getItem("access_token"),
       id_ruangrapat: id,
     });
   }
   getNotulen(): Observable<any> {
-    return this.httpClient.post("http://localhost:8000/notulen", {
+    return this.httpClient.post(environment.apiURL + "notulen", {
       token: localStorage.getItem("access_token"),
     });
   }
   getPegawai(): Observable<any> {
-    return this.httpClient.post("http://localhost:8000/pegawai", {
+    return this.httpClient.post(environment.apiURL + "pegawai", {
       token: localStorage.getItem("access_token"),
     });
   }
   getSKPD(): Observable<any> {
-    return this.httpClient.post("http://localhost:8000/SKPD", {
+    return this.httpClient.post(environment.apiURL + "SKPD", {
       token: localStorage.getItem("access_token"),
     });
   }
@@ -67,7 +68,7 @@ export class RuanganService {
     headers.append("Content-Type", "multipart/form-data");
     headers.append("Accept", "application/json");
     return this.httpClient.post(
-      "http://localhost:8000/ruanganPinjam",
+      environment.apiURL + "ruanganPinjam",
       formData,
       {
         headers: headers,
@@ -76,14 +77,14 @@ export class RuanganService {
   }
   tambahRuangan(detailRuangan, fasilitasRuangan): Observable<any> {
     console.log(detailRuangan);
-    return this.httpClient.post("http://localhost:8000/ruanganTambah", {
+    return this.httpClient.post(environment.apiURL + "ruanganTambah", {
       token: localStorage.getItem("access_token"),
       detailRuangan: detailRuangan,
       fasilitasRuangan: fasilitasRuangan,
     });
   }
   editRuangan(idRuangan, detailRuangan, detailFasilitas): Observable<any> {
-    return this.httpClient.post("http://localhost:8000/ruanganEdit", {
+    return this.httpClient.post(environment.apiURL + "ruanganEdit", {
       token: localStorage.getItem("access_token"),
       idRuangan: idRuangan,
       detailRuangan: detailRuangan,
@@ -91,7 +92,7 @@ export class RuanganService {
     });
   }
   deleteRuangan(idRuangan) {
-    return this.httpClient.post("http://localhost:8000/ruanganHapus", {
+    return this.httpClient.post(environment.apiURL + "ruanganHapus", {
       token: localStorage.getItem("access_token"),
       idRuangan: idRuangan,
     });

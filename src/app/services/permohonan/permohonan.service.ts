@@ -7,6 +7,7 @@ import {
 } from "@angular/common/http";
 import { tap, retry } from "rxjs/operators";
 import { Observable } from "rxjs";
+import { environment } from "src/environments/environment";
 
 @Injectable({
   providedIn: "root",
@@ -14,20 +15,20 @@ import { Observable } from "rxjs";
 export class PermohonanService {
   constructor(private httpClient: HttpClient) {}
   getAll(): Observable<any> {
-    return this.httpClient.post("http://localhost:8000/permohonan", {
+    return this.httpClient.post(environment.apiURL + "permohonan", {
       token: localStorage.getItem("access_token"),
       idUser: localStorage.getItem("nip"),
     });
   }
   detailPermohonan(id): Observable<any> {
     console.log(id);
-    return this.httpClient.post("http://localhost:8000/permohonanDetail", {
+    return this.httpClient.post(environment.apiURL + "permohonanDetail", {
       token: localStorage.getItem("access_token"),
       idPermohonan: id,
     });
   }
   ubahStatus(id, status): Observable<any> {
-    return this.httpClient.post("http://localhost:8000/permohonanEdit", {
+    return this.httpClient.post(environment.apiURL + "permohonanEdit", {
       token: localStorage.getItem("access_token"),
       idPermohonan: id,
       status: status,
@@ -40,7 +41,8 @@ export class PermohonanService {
     //    params = params.append('namaFile', 'haha');
     //    params = params.append('extension', 'xls');
     return this.httpClient.get(
-      "http://localhost:8000/permohonanDownloadFileTransaksi/" +
+      environment.apiURL +
+        "permohonanDownloadFileTransaksi/" +
         idTransaksi +
         "/" +
         namaFile +
