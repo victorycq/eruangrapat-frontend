@@ -5,7 +5,11 @@
   />
 </head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+<nb-card-body class="example-last-child-no-b-margin" *ngIf="loginError == true">
+  <nb-alert status="danger" closable (close)="onClose()"
+    >Username atau Password anda salah!</nb-alert
+  >
+</nb-card-body>
 <h4>E - Ruang Rapat</h4>
 <img src="assets/img/Kota Madiun.png" />
 <h3>
