@@ -85,25 +85,27 @@
         {{ permohonan.status }}
       </button> </ng-template
     ><br />
-    <nb-select
-      shape="semi-round"
-      placeholder="Pilih Status Permohonan"
-      [(selected)]="status"
-    >
-      <nb-option value="Disetujui">Setujui Permohonan</nb-option>
-      <nb-option value="Ditolak">Tolak Permohonan</nb-option>
-    </nb-select>
-    <button
-      *ngIf="status !== ''; else elseBlock1"
-      nbButton
-      hero
-      status="primary"
-      (click)="simpanPerubahan()"
-    >
-      Simpan
-    </button>
-    <ng-template #elseBlock1>
-      <button nbButton disabled>Simpan</button>
-    </ng-template>
+    <div class="permohonan__action" *ngIf="role_id == 3">
+      <nb-select
+        shape="semi-round"
+        placeholder="Pilih Status Permohonan"
+        [(selected)]="status"
+      >
+        <nb-option value="Disetujui">Setujui Permohonan</nb-option>
+        <nb-option value="Ditolak">Tolak Permohonan</nb-option>
+      </nb-select>
+      <button
+        *ngIf="status !== ''; else elseBlock1"
+        nbButton
+        hero
+        status="primary"
+        (click)="simpanPerubahan()"
+      >
+        Simpan
+      </button>
+      <ng-template #elseBlock1>
+        <button nbButton disabled>Simpan</button>
+      </ng-template>
+    </div>
   </nb-card-body>
 </nb-card>

@@ -18,6 +18,7 @@ export class PermohonanDetailComponent implements OnInit {
   permohonan: any = {} as any;
   filePermohonan: Array<any> = [];
   status: string = "";
+  role_id:string = localStorage.getItem("role_id");
   ngOnInit() {
     this.us.detailPermohonan(this.route.snapshot.params.id).subscribe(
       (data) => {
