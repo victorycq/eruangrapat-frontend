@@ -166,7 +166,7 @@ export class RuanganPinjamComponent implements OnInit {
         console.log(data);
         this.toastrService.show(
           status || "Success",
-          `Ruangan Berhasil Di Tambahkan`,
+          `Permohonan Peminjaman Berhasil Ditambahkan`,
           { position, status }
         );
         this.router.navigate(["/permohonan"]);
