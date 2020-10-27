@@ -49,7 +49,7 @@ export class RuanganPinjamComponent implements OnInit {
     fileTransaksi: null,
     opd: localStorage.getItem("opd"),
   };
-  role = localStorage.getItem("role_id");
+  role: any = localStorage.getItem("role_id");
   namaPegawai: any = [];
   notulen: any = [];
   master_opd: any = [];

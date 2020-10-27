@@ -28,7 +28,7 @@ export class RuanganComponent implements OnInit {
   // data: TreeNode<FSEntry>[] = [{ data: { ruangan: 'null', lokasi: 'null', kapasitas: 'null',id: 0 } },{ data: { ruangan: 'null', lokasi: 'null', kapasitas: 'null',id: 0 } }];
   constructor(public us: RuanganService, private router: Router) {}
   ruangan: any = [];
-  roleId = localStorage.getItem("role_id");
+  roleId: any = localStorage.getItem("role_id");
   ngOnInit() {
     console.log(this.roleId);
     this.us.getRuangan().subscribe(
