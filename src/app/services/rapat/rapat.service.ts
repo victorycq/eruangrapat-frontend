@@ -8,7 +8,7 @@ import {
 import { tap, retry } from "rxjs/operators";
 import { Observable } from "rxjs";
 import { analyzeAndValidateNgModules } from "@angular/compiler";
-import { environment } from "src/environments/environment";
+import { environment } from "src/environments/environment.prod";
 
 @Injectable({
   providedIn: "root",
