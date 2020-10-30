@@ -76,12 +76,20 @@ export class RuanganService {
     );
   }
   tambahRuangan(detailRuangan, fasilitasRuangan): Observable<any> {
-    console.log(detailRuangan);
-    return this.httpClient.post(environment.apiURL + "ruanganTambah", {
-      token: localStorage.getItem("access_token"),
-      detailRuangan: detailRuangan,
-      fasilitasRuangan: fasilitasRuangan,
-    });
+    const formData = new FormData();
+    formData.append("detailRuangan", JSON.stringify(detailRuangan));
+    formData.append("fasilitasRuangan", JSON.stringify(fasilitasRuangan));
+    formData.append("token", localStorage.getItem("access_token"));
+    const headers = new HttpHeaders();
+    headers.append("Content-Type", "multipart/form-data");
+    headers.append("Accept", "application/json");
+    return this.httpClient.post(
+      environment.apiURL + "ruanganTambah",
+      formData,
+      {
+        headers: headers,
+      }
+    );
   }
   editRuangan(idRuangan, detailRuangan, detailFasilitas): Observable<any> {
     return this.httpClient.post(environment.apiURL + "ruanganEdit", {
